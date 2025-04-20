@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 255 20 147; /* hot pink */
+    --color-secondary: 0 255 255; /* cyan */
+    --color-background: 0 0 0; /* black */
+  }
+}
+
+@layer components {
+  .hero-text {
+    @apply text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight;
+    text-shadow: 0 0 10px rgba(var(--color-primary), 0.5);
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 tracking-wide;
+  }
+
+  .card {
+    @apply bg-black/50 backdrop-blur-sm rounded-xl p-6 border border-white/10 
+           transition-all duration-300 hover:border-white/30 hover:scale-105;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-full bg-gradient-to-r from-[rgb(var(--color-primary))] 
+           to-[rgb(var(--color-secondary))] text-white font-medium
+           hover:shadow-lg hover:shadow-[rgb(var(--color-primary))]/50 
+           transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full bg-white/10 text-white font-medium
+           hover:bg-white/20 transition-all duration-300;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-[rgb(var(--color-primary))] to-[rgb(var(--color-secondary))] rounded-full;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #fff;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
+/* Kalendarz */
+.calendar-container {
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+}
+
+.react-calendar {
+  width: 100%;
+  background: transparent !important;
+  border: none !important;
+  font-family: inherit;
+}
+
+.react-calendar__tile {
+  position: relative;
+  padding: 1.5em 0.5em !important;
+  color: #fff !important;
+  background: transparent !important;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus,
+.react-calendar__tile--active {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.5rem;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #ff4b4b !important;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.react-calendar__navigation button {
+  color: #fff !important;
+  background: transparent !important;
+  min-width: 44px !important;
+  font-size: 1.2em !important;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.5rem;
+}
+
+.react-calendar__navigation button[disabled] {
+  opacity: 0.3;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 0.5em;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none !important;
+  cursor: default;
+}
+
+.index {
+  z-index: 1000;
+}
