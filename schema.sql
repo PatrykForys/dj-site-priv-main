@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS page_views (
 
 -- Utworzenie domyślnego użytkownika administratora
 -- Hasło: admin (należy zmienić po pierwszym logowaniu)
-INSERT INTO users (email, password) VALUES ('admin@example.com', '$2b$10$3eGxDLXFbM93b4yBxOOXj.3EmK8XmMTmbcWGoe.j.nvqpMm9fzxES');
+INSERT INTO users (email, password) VALUES ('admin@example.com', '$2a$10$Z1rsIPSE9Tb3Ad8Q9ber6.KGhxLzujuOhj64IqoopqZkFuU5yEbl2');
 
 -- Indeksy dla wydajniejszych zapytań
 CREATE INDEX idx_bookings_event_date ON bookings(event_date);
