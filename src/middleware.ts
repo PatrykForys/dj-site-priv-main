@@ -11,16 +11,20 @@ export async function middleware(request: NextRequest) {
     // Sprawdź autoryzację dla ścieżek admin
     if (pathname.startsWith('/admin')) {
       const token = request.cookies.get('auth_token')?.value;
+      console.log("[Middleware] Token odczytany z ciasteczka:", token ? "Znaleziono" : "Brak", token ? "(długość: " + token.length + ")" : "");
 
       if (!token) {
+        console.log("[Middleware] Brak tokena, przekierowanie do /login");
         return NextResponse.redirect(new URL('/login', request.url));
       }
 
       try {
         const secret = new TextEncoder().encode(JWT_SECRET);
         await jose.jwtVerify(token, secret);
+        console.log("[Middleware] Token zweryfikowany pomyślnie");
       } catch (error) {
-        console.error('Błąd weryfikacji tokenu:', error);
+        console.error('[Middleware] Błąd weryfikacji tokenu:', error);
+        console.log("[Middleware] Nieprawidłowy token, przekierowanie do /login");
         return NextResponse.redirect(new URL('/login', request.url));
       }
     }

@@ -46,9 +46,13 @@ export default function LoginPage() {
       });
 
       const data = await response.json();
+      console.log("Login API response status:", response.status);
+      console.log("Login API response data:", data);
 
       if (response.ok) {
-        router.push("/admin");
+        console.log("Próba przekierowania do /admin...");
+        router.replace("/admin");
+        setIsSubmitting(false);
       } else {
         throw new Error(data.message || "Błąd logowania");
       }
